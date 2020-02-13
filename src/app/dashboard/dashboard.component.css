@@ -1,0 +1,53 @@
+.blueColor {
+    color: #337ab7 !important;
+}
+
+.leftPanel, .rightPanel {
+    height:600px !important;
+    overflow-y:scroll !important;
+}
+
+.blackNav {
+    background-color: black;
+}
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+    background-color: black !important;
+}
+
+.disableGlyphicons{
+    pointer-events: none;
+       cursor: default;
+       color: gray;
+   }
+
+   .boldClass {
+       font-weight: bold;
+   }
+ 
+   .list-group-item {
+       border: none;
+   }
+
+
+
+   .description {
+       background: #F8F8F8;
+       padding: 10px;
+       margin-left: 5px;
+       margin-right: 5px;
+       
+   }
+   .descriptionText {
+       padding: 10px;
+   }
+   .defaultBtn {
+       background-color: white !important;
+   }
+  
+   .defaultBtn:hover {
+    text-decoration: underline;
+    font-weight: bold;
+    text-decoration-style: solid 10px;
+    color: #337ab7 !important;
+   }

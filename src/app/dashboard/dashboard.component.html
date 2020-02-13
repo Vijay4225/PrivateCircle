@@ -1,50 +1,63 @@
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-default">
     <div class="container-fluid">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#"><span class="glyphicon glyphicon-th-list"></span>Saved Lists</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-filter"></span>Saved filters</a></li>glyphicon glyphicon-filter
-        <li><a href="#"><span class="glyphicon glyphicon-search"></span>Search History</a></li>
+        <li class="active blackNav"><a href="#"><span class="glyphicon glyphicon-th-list"></span>SAVED LISTS</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-filter"></span>SAVED FILTERS</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-search"></span>SEARCH HISTORY</a></li>
       </ul>
       <form class="navbar-form navbar-right">
         <div class="input-group">
           <input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchString" name="searchString" >
-          <div class="input-group-btn">
-            <button class="btn btn-default" >
-              <i class="glyphicon glyphicon-search"></i>
-            </button>
-          </div>
+          
         </div>
       </form>
+      
     </div>
   </nav>
   
+  <div class="container-fluid">
   <div class="row">
-    <div class="col-sm-9">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Date</th>
-            <th>Name</th>
-            <th>No of Entities</th>
-            <th>Actions</th>
-            <th></th>
-      </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let user of usersData | filter:searchString;let i = index">
-            <td>{{user.date}}</td>
-            <td>{{user.name}}</td>
-            <td>{{user.entities}}</td>
-            <td><span class="glyphicon glyphicon-edit"></span></td>
-            <td><button type="button" class="btn btn-primary" (click)="displayDescription(user.id)">Details</button></td>
+    <div class="col-sm-9 col-lg-9 col-md-9 leftPanel">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Name</th>
+                <th>No of Entities</th>
+                <th>Actions</th>
+                <th></th>
           </tr>
-        </tbody>
-      </table>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of usersData | filter:searchString;let i = index">
+                <td *ngIf="user.dateAvailable">{{user.date}}</td>
+                <td *ngIf="!user.dateAvailable"><span class="glyphicon glyphicon-calendar" ></span></td>
+                <td [ngClass]="{'blueColor':!user.dateAvailable}" ><b>{{user.name}}</b></td>
+                <td>{{user.entities}}</td>
+                <td>
+                  <span class="glyphicon glyphicon-envelope disableGlyphicons" ></span>&nbsp;&nbsp;
+                  <span *ngIf="user.dateAvailable" class="glyphicon glyphicon-share disableGlyphicons"></span>&nbsp;
+                  <span *ngIf="user.dateAvailable" class="glyphicon glyphicon-pencil disableGlyphicons"></span>&nbsp;&nbsp;
+                  <span *ngIf="user.dateAvailable" class="glyphicon glyphicon-trash disableGlyphicons"></span>&nbsp;&nbsp;
+                </td>
+                <td><button type="submit" class="btn defaultBtn" (click)="displayDescription(user.id)">Details</button></td>
+              </tr>
+            </tbody>
+          </table>
     </div>
-    <div class="col-sm-3">
-      <span *ngIf="!description">No description yet</span>
-      <h1 *ngIf="description">Description</h1>
-      <div *ngIf="description"> {{description}} </div>
+    <div class="col-sm-3 col-lg-3 col-md-3 rightPanel ">
+      <div class="row description">
+        <span class="descriptionText">No description yet</span>
+        <span class="glyphicon glyphicon-plus" ></span>
+        <a href="#">Add Description</a>
+      </div>
+      <div *ngIf="description"> 
+        <ul class=list-group>
+          <li class="list-group-item" *ngFor="let desc of description">
+              <a href="#">{{desc.company}}</a></li>
+        </ul>  
+      </div>
     </div>
   </div>
+</div>
   

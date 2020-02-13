@@ -4,6 +4,7 @@ import { AppService } from '../shared/portfolio.service';
 @Component({
   selector: 'dashboard',
   templateUrl: './dashboard.component.html',
+  styleUrls : ['./dashboard.component.css'],
   providers: [AppService]
 })
 export class DashboardComponent implements OnInit{
